@@ -18,17 +18,17 @@ contract ContratoDeVentas {
         precio = _precio;
         tiempoActualizado = block.timestamp;
         emit EstadoDelUsuario(descripcion, msg.sender, msg.value, block.timestamp);
-        emit EstadoDelUsuario("Artículo en venta:", msg.sender, msg.value, block.timestamp);
+        emit EstadoDelUsuario("ArtIculo en venta:", msg.sender, msg.value, block.timestamp);
     }
     
     function comprar() external payable {
-        require(msg.value >= precio && enVenta == true, "Ether insuficiente o el artículo no está en venta");
+        require(msg.value >= precio && enVenta == true, "Ether insuficiente o el articulo no esta en venta");
         payable(propietario).transfer(address(this).balance);
         propietario = msg.sender;
         enVenta = false;
         historialDePropietarios.push(msg.sender); // Añade al nuevo propietario al historial
-        emit EstadoDelUsuario("Artículo Comprado", msg.sender, msg.value, block.timestamp);
-        emit EstadoDelUsuario("Artículo ya no está en venta", msg.sender, msg.value, block.timestamp);
+        emit EstadoDelUsuario("Articulo Comprado", msg.sender, msg.value, block.timestamp);
+        emit EstadoDelUsuario("Articulo ya no esta en venta", msg.sender, msg.value, block.timestamp);
         tiempoActualizado = block.timestamp;
     }
 
@@ -40,17 +40,17 @@ contract ContratoDeVentas {
     function modificarDescripcion(string calldata descripcion) external soloPropietario {
         descripcionDeVenta = descripcion;
         emit EstadoDelUsuario(descripcion, msg.sender, 0, block.timestamp);
-        emit EstadoDelUsuario("Descripción Modificada", msg.sender, 0, block.timestamp);
+        emit EstadoDelUsuario("Descripcion Modificada", msg.sender, 0, block.timestamp);
     }
 
     function ponerEnVenta() external soloPropietario {
         enVenta = true;
-        emit EstadoDelUsuario("Artículo ahora está en venta", msg.sender, 0, block.timestamp);
+        emit EstadoDelUsuario("Articulo ahora esta en venta", msg.sender, 0, block.timestamp);
     }
 
     function retirarDeVenta() external soloPropietario {
         enVenta = false;
-        emit EstadoDelUsuario("Artículo ya no está en venta", msg.sender, 0, block.timestamp);
+        emit EstadoDelUsuario("Articulo ya no esta en venta", msg.sender, 0, block.timestamp);
     }
 
     function obtenerHistorialDePropietarios() external view returns (address[] memory) {
