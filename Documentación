@@ -4,3 +4,107 @@ Página para linkear la wallet https://chainlist.org/?search=conflu&testnets=tru
 Habilitar la opción de testnets y colocar conflux o cfx
 Página para reclamar tokens https://efaucet.confluxnetwork.org/ 
 Server Discord https://discord.gg/rAcMC2Xy
+
+Sub fuente()
+Range("I9:L14").Select
+With Selection.Font
+.Name = "Arial"
+.Size = 11
+.Strikethrough = False
+.Superscript = False
+.Subscript = False
+.OutlineFont = False
+.Shadow = False
+.Underline = xlUnderlineStyleNone
+.Color = -10477568
+.TintAndShade = 0
+.ThemeFont = xlThemeFontNone
+End With
+End Sub
+
+Sub Formatofuente()
+Range("I9:L14").Select
+    With Selection.Font
+    .Name = "Arial"
+    .Size = 11
+    .Strikethrough = False
+    .Superscript = False
+    .Subscript = False
+    .OutlineFont = False
+    .Shadow = False
+    .Underline = xlUnderlineStyleNone
+    .Color = 10477568
+    .TintAndShade = 0
+    .ThemeFont = xlThemeFontNone
+    .Bold = True
+    .Italic = True
+    .Underline = xlUnderlineStyleSingle
+    
+    End With
+End Sub
+Sub Macrocolor()
+    Range("F5").Select
+    
+    With Selection.Interior
+        .Color = 5479452
+        .TintAndShade = 0
+    End With
+End Sub
+Sub Alinear()
+'
+' Alinear Macro
+'
+
+'
+    Range("D6").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+End Sub
+Sub mayus()
+'
+' mayus Macro
+'
+
+'
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=UPPER(R[5]C[3])"
+    Range("A2").Select
+End Sub
+Sub minus()
+'
+' minus Macro
+'
+
+'
+    ActiveCell.FormulaR1C1 = "=LOWER(R[5]C[3])"
+    Range("F22").Select
+End Sub
+Sub uno()
+    Range("D6").Select
+    Selection.Value = LCase(Selection.Value)
+End Sub
+
+Sub tamaño()
+
+Range("I9:L14").Select
+With Selection.Font
+.Name = "Comic Sans MS"
+.Size = 30
+End With
+
+End Sub
+Sub Deleteall()
+' Borrar todo el contenido y lo realizado
+'
+    Range("D3:K12").Select
+    Selection.Clear
+End Sub
